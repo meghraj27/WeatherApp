@@ -19,12 +19,12 @@ public class WeatherListRecyclerViewAdapter
         extends RecyclerView.Adapter<WeatherListRecyclerViewAdapter.ViewHolder> {
 
     private List<CityWeather> items = new ArrayList<CityWeather>();
-    private final OnListFragmentInteractionListener mListener;
+//    private final OnListFragmentInteractionListener mListener;
 
     public WeatherListRecyclerViewAdapter(List<CityWeather> cityWeatherList,
                                           OnListFragmentInteractionListener listener) {
         this.items.addAll(cityWeatherList);
-        this.mListener = listener;
+//        this.mListener = listener;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class WeatherListRecyclerViewAdapter
         holder.item = items.get(position);
 
         holder.textViewCity.setText(String.valueOf(holder.item.getCity()));
-        holder.textViewSyncTime.setText(String.valueOf(holder.item.getObservation_time()));
+//        holder.textViewSyncTime.setText(String.valueOf(holder.item.getObservation_time()));
         holder.textViewObservationTime.setText(String.valueOf(holder.item.getObservation_time()));
         holder.textViewTemp.setText(String.valueOf(holder.item.getTemp_C()));
         holder.textViewFeelsLike.setText(String.valueOf(holder.item.getFeelsLikeC()));
@@ -91,7 +91,7 @@ public class WeatherListRecyclerViewAdapter
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView textViewCity;
-        public final TextView textViewSyncTime;
+//        public final TextView textViewSyncTime;
         public final TextView textViewObservationTime;
         public final TextView textViewTemp;
         public final TextView textViewFeelsLike;
@@ -109,7 +109,7 @@ public class WeatherListRecyclerViewAdapter
             super(view);
             mView = view;
             textViewCity = (TextView) view.findViewById(R.id.textViewCity);
-            textViewSyncTime = (TextView) view.findViewById(R.id.textViewSyncTime);
+//            textViewSyncTime = (TextView) view.findViewById(R.id.textViewSyncTime);
             textViewObservationTime = (TextView) view.findViewById(R.id.textViewObservationTime);
             textViewTemp = (TextView) view.findViewById(R.id.textViewTemp);
             textViewFeelsLike = (TextView) view.findViewById(R.id.textViewFeelsLike);

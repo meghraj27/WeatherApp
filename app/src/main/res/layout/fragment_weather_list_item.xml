@@ -2,112 +2,133 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textViewCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="city"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true">
-
-        <TextView
-            android:id="@+id/textViewSyncTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="hh:mm tt" />
-
-    </LinearLayout>
+    <!--<TextView-->
+        <!--android:id="@+id/textViewSyncTime"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_toEndOf="@+id/textViewCity"-->
+        <!--android:layout_toRightOf="@+id/textViewCity" />-->
 
     <TextView
         android:id="@+id/textViewObservationTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewCity"
-        android:text="hh:mm tt" />
-
+        android:layout_below="@+id/textViewCity" />
 
     <TextView
         android:id="@+id/textViewTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewObservationTime"
-        android:text="0&#176;C"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="56sp" />
-
-    <TextView
-        android:id="@+id/textViewFeelsLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTemp"
-        android:text="0&#176;C" />
 
     <TextView
         android:id="@+id/textViewWeatherDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewFeelsLike"
-        android:text="desc" />
+        android:layout_alignBaseline="@+id/textViewTemp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/textViewTemp"
+        android:layout_toRightOf="@+id/textViewTemp" />
 
-    <TextView
-        android:id="@+id/textViewWindspeed"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewWeatherDesc"
-        android:text="windspeed"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:layout_below="@+id/textViewTemp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textViewWinddir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewWindspeed"
-        android:text="winddir"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewPrecip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="precip"
-        android:layout_below="@+id/textViewWinddir"
-        android:textAppearance="?attr/textAppearanceListItem" />
+            <TextView
+                android:id="@+id/textViewPrecip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewHumidity"
-        android:layout_width="wrap_content"
-        android:layout_below="@id/textViewWinddir"
-        android:layout_height="wrap_content"
-        android:text="humidity" />
-
-    <TextView
-        android:id="@+id/textViewVisibility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewHumidity"
-        android:text="visibility" />
-
-    <TextView
-        android:id="@+id/textViewPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewVisibility"
-        android:text="pressure" />
-
-    <TextView
-        android:id="@+id/textViewCloudCover"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/textViewPressure"
-        android:layout_height="wrap_content"
-        android:text="cloud cover" />
+            <TextView
+                android:id="@+id/textViewFeelsLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
 
 
+            <TextView
+                android:id="@+id/textViewWindspeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/textViewWinddir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/textViewVisibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/textViewPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/textViewCloudCover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

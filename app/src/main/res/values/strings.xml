@@ -95,15 +95,17 @@
 
     <string name="string_temp_c">%1$d&#176;C</string>
     <string name="string_temp_f">%1$d&#176;F</string>
-    <string name="string_feelslike_c">%1$d&#176;F</string>
-    <string name="string_feelslike_f">%1$d&#176;F</string>
-    <string name="string_observation_time">%1$d&#176;F</string>
-    <string name="string_windspeed">%1$d&#176;F</string>
-    <string name="string_winddir">%1$d&#176;F</string>
-    <string name="string_precip">%1$d&#176;F</string>
-    <string name="string_humidity">%1$d&#176;F</string>
-    <string name="string_visibility">%1$d&#176;F</string>
-    <string name="string_pressure">%1$d&#176;F</string>
-    <string name="string_cloud_cover">%1$d&#176;F</string>
+    <string name="string_feelslike_c">Feels like: %1$d&#176;C</string>
+    <string name="string_feelslike_f">Feels like: %1$d&#176;F</string>
+    <string name="string_observation_time">Observation time: %1$s</string>
+    <string name="string_windspeed">Wind speed: %1$d</string>
+    <string name="string_winddir">Wind dir.: %1$d&#176;</string>
+    <string name="string_precip">Precip: %1$d mm</string>
+    <string name="string_humidity">Humidity: %1$f&#37;</string>
+    <string name="string_visibility">Visibility: %1$d km</string>
+    <string name="string_pressure">Pressure: %1$d mb</string>
+    <string name="string_cloud_cover">Cloud cover: %1$d&#37;</string>
+    <string name="sync_time">Last sync: %1$s</string>
+    <string name="string_weather_desc">%1$s</string>
 
 </resources>

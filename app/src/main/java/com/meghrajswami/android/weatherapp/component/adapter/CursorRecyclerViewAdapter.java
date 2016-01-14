@@ -6,7 +6,9 @@ import android.database.DataSetObserver;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by megh on 1/11/2016.
+ * Abstract Cursor RecyclerView Adapter, with dataset observer,
+ * to keep recycler view items updated.
+ * Whenever data changes in local db changes will appear in recyclerview also
  */
 public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {

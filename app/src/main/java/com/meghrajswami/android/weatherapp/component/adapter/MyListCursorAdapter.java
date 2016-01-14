@@ -13,12 +13,15 @@ import com.meghrajswami.android.weatherapp.model.WeatherResponse.CityWeather;
 import com.meghrajswami.android.weatherapp.repo.WeatherSQLiteHelper;
 
 /**
- * Created by megh on 1/11/2016.
+ * Cursor recyclerview adapter for weather list item
  */
 public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorAdapter.ViewHolder> {
 
+    private Context context;
+
     public MyListCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor);
+        this.context = context;
     }
 
     @Override
@@ -33,24 +36,36 @@ public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorA
         holder.item = WeatherSQLiteHelper.fetchItemFromCursor(cursor);
 
         holder.textViewCity.setText(String.valueOf(holder.item.getCity()));
-        holder.textViewSyncTime.setText(String.valueOf(holder.item.getObservation_time()));
-        holder.textViewObservationTime.setText(String.valueOf(holder.item.getObservation_time()));
-        holder.textViewTemp.setText(String.valueOf(holder.item.getTemp_C()));
-        holder.textViewFeelsLike.setText(String.valueOf(holder.item.getFeelsLikeC()));
-        holder.textViewWeatherDesc.setText(String.valueOf(holder.item.getWeatherDesc()));
-        holder.textViewWindspeed.setText(String.valueOf(holder.item.getWindspeedKmph()));
-        holder.textViewWinddir.setText(String.valueOf(holder.item.getWinddirDegree()));
-        holder.textViewPrecip.setText(String.valueOf(holder.item.getPrecipMM()));
-        holder.textViewHumidity.setText(String.valueOf(holder.item.getHumidity()));
-        holder.textViewVisibility.setText(String.valueOf(holder.item.getVisibility()));
-        holder.textViewPressure.setText(String.valueOf(holder.item.getPressure()));
-        holder.textViewCloudCover.setText(String.valueOf(holder.item.getCloudcover()));
+//        holder.textViewSyncTime.setText(context.getResources().getString(R.string.sync_time,
+//                new Date(holder.item.getUpdatedAt()).getTime()));
+        holder.textViewObservationTime.setText(context.getResources().getString(
+                R.string.string_observation_time, holder.item.getObservation_time()));
+        holder.textViewTemp.setText(context.getResources().getString(
+                R.string.string_temp_c, holder.item.getTemp_C()));
+        holder.textViewFeelsLike.setText(context.getResources().getString(
+                R.string.string_feelslike_c, holder.item.getFeelsLikeC()));
+        holder.textViewWeatherDesc.setText(context.getResources().getString(
+                R.string.string_weather_desc, holder.item.getWeatherDesc()));
+        holder.textViewWindspeed.setText(context.getResources().getString(
+                R.string.string_windspeed, holder.item.getWindspeedKmph()));
+        holder.textViewWinddir.setText(context.getResources().getString(
+                R.string.string_winddir, holder.item.getWinddirDegree()));
+        holder.textViewPrecip.setText(context.getResources().getString(
+                R.string.string_precip, holder.item.getPrecipMM()));
+        holder.textViewHumidity.setText(context.getResources().getString(
+                R.string.string_humidity, holder.item.getHumidity()));
+        holder.textViewVisibility.setText(context.getResources().getString(
+                R.string.string_visibility, holder.item.getVisibility()));
+        holder.textViewPressure.setText(context.getResources().getString(
+                R.string.string_pressure, holder.item.getPressure()));
+        holder.textViewCloudCover.setText(context.getResources().getString(
+                R.string.string_cloud_cover, holder.item.getCloudcover()));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView textViewCity;
-        public final TextView textViewSyncTime;
+//        public final TextView textViewSyncTime;
         public final TextView textViewObservationTime;
         public final TextView textViewTemp;
         public final TextView textViewFeelsLike;
@@ -68,7 +83,7 @@ public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorA
             super(view);
             mView = view;
             textViewCity = (TextView) view.findViewById(R.id.textViewCity);
-            textViewSyncTime = (TextView) view.findViewById(R.id.textViewSyncTime);
+//            textViewSyncTime = (TextView) view.findViewById(R.id.textViewSyncTime);
             textViewObservationTime = (TextView) view.findViewById(R.id.textViewObservationTime);
             textViewTemp = (TextView) view.findViewById(R.id.textViewTemp);
             textViewFeelsLike = (TextView) view.findViewById(R.id.textViewFeelsLike);
