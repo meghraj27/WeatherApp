@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * This class is for managing "weather" table in sqlite database
  */
-public class WeatherSQLiteHelper extends SQLiteOpenHelper {
+public class CityWeatherSQLiteHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "WeatherSQLiteHelper";
+    private static final String TAG = "CityWeatherSQLiteHelper";
 
-    private static WeatherSQLiteHelper mInstance = null;
+    private static CityWeatherSQLiteHelper mInstance = null;
 
     //CityWeather object related fields, which will be persisted
     //to sqlite db table
@@ -105,17 +105,17 @@ public class WeatherSQLiteHelper extends SQLiteOpenHelper {
             KEY_PRESSURE_INCHES,
             KEY_CLOUD_COVER};
 
-    public WeatherSQLiteHelper(Context context, String name,
-                               SQLiteDatabase.CursorFactory factory, int version) {
+    private CityWeatherSQLiteHelper(Context context, String name,
+                                    SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public static WeatherSQLiteHelper getInstance(Context context, String name,
+    public static CityWeatherSQLiteHelper getInstance(Context context, String name,
                                                   SQLiteDatabase.CursorFactory factory, int version) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.
         if (mInstance == null) {
-            mInstance = new WeatherSQLiteHelper(context.getApplicationContext(), name,
+            mInstance = new CityWeatherSQLiteHelper(context.getApplicationContext(), name,
                     factory, version);
         }
         return mInstance;

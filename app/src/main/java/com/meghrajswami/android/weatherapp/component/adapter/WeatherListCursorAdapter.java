@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.meghrajswami.android.weatherapp.R;
 import com.meghrajswami.android.weatherapp.model.WeatherResponse.CityWeather;
-import com.meghrajswami.android.weatherapp.repo.WeatherSQLiteHelper;
+import com.meghrajswami.android.weatherapp.repo.CityWeatherSQLiteHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,7 +39,7 @@ public class WeatherListCursorAdapter extends CursorRecyclerViewAdapter<WeatherL
 
     @Override
     public void onBindViewHolder(ViewHolder holder, Cursor cursor) {
-        holder.item = WeatherSQLiteHelper.fetchItemFromCursor(cursor);
+        holder.item = CityWeatherSQLiteHelper.fetchItemFromCursor(cursor);
 
         holder.textViewCity.setText(String.valueOf(holder.item.getCity()));
 //        holder.textViewSyncTime.setText(context.getResources().getString(R.string.sync_time,

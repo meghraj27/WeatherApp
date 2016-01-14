@@ -18,10 +18,10 @@ public class CityWeatherLocalDS {
 
     private static final String TAG = "CityWeatherLocalDS";
 
-    private WeatherSQLiteHelper dbHelper;
+    private CityWeatherSQLiteHelper dbHelper;
 
     public CityWeatherLocalDS(Context context) {
-        dbHelper = WeatherSQLiteHelper.getInstance(context, Config.SQLITE_DATABASE_NAME,
+        dbHelper = CityWeatherSQLiteHelper.getInstance(context, Config.SQLITE_DATABASE_NAME,
                 null, Config.SQLITE_DATABASE_VERSION);
     }
 

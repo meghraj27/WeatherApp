@@ -57,6 +57,7 @@ public class WeatherService extends Service {
 
             // Stop the service using the startId, so that we don't stop
             // the service in the middle of handling another job
+            Log.d(TAG, "stopself " + msg.arg1);
             stopSelf(msg.arg1);
         }
 
@@ -72,6 +73,7 @@ public class WeatherService extends Service {
             WeatherResponse weatherResponse = weatherDataStore.getWeather(city);
             if (weatherResponse == null)
                 return;
+
             //if successfully updated than set Config.PREFS_KEY_LAST_SYNC_TIMESTAMP
             //(with current timestamp) in shared preferences also
             if (cityWeatherLocalDS.putCityWeather(city, weatherResponse)) {
@@ -101,6 +103,7 @@ public class WeatherService extends Service {
                 WeatherResponse weatherResponse = weatherDataStore.getWeather(cityLocal);
                 if (weatherResponse == null)
                     continue;
+
                 //if successfully updated than set Config.PREFS_KEY_LAST_SYNC_TIMESTAMP
                 //(with current timestamp) in shared preferences also
                 if (cityWeatherLocalDS.putCityWeather(cityLocal, weatherResponse)) {
@@ -151,7 +154,7 @@ public class WeatherService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "Service starting");
+        Log.d(TAG, "Service starting " + startId);
 
         // For each start request, send a message to start a job and deliver the
         // start ID so we know which request we're stopping when we finish the job
