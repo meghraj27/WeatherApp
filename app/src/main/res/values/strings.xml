@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="launcher_name">Weather</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+
+    <string name="label_menu_item_select_cities">Select Cities</string>
+
+    <!-- city name itself is a key that is used in data retrieval from
+    sqlite db -->
+    <string-array name="cities">
+        <item>Besroli</item>
+        <item>Jaipur</item>
+        <item>Udaipur</item>
+        <item>Sikar</item>
+        <item>Ahmedabad</item>
+        <item>Singapore</item>
+        <item>Hanoi</item>
+        <item>Seoul</item>
+        <item>Taipei</item>
+        <item>Hong Kong</item>
+        <item>Ulan Bator</item>
+        <item>Jakarta</item>
+        <item>Kuala Lumpur</item>
+        <item>Manila</item>
+        <item>Phnom Penh</item>
+        <item>Vientiane</item>
+        <item>New Delhi</item>
+        <item>Hyderabad</item>
+        <item>Shimla</item>
+        <item>Chennai</item>
+        <item>Mumbai</item>
+        <item>Dehradun</item>
+        <item>Nainital</item>
+        <item>Joshimath</item>
+        <item>Srinagar</item>
+        <item>Jammu</item>
+        <item>Bangalore</item>
+        <item>Kocchi</item>
+        <item>Kolkata</item>
+        <item>Kanpur</item>
+        <item>Bikaner</item>
+        <item>Jodhpur</item>
+        <item>Churu</item>
+        <item>Rewari</item>
+        <item>Chandigarh</item>
+        <item>Bhopal</item>
+        <item>Indore</item>
+        <item>Surat</item>
+        <item>Gandhinagar</item>
+        <item>Rajkot</item>
+        <item>Warangal</item>
+        <item>Solapur</item>
+        <item>Nagpur</item>
+        <item>Solan</item>
+        <item>Aizawl</item>
+        <item>Guwahati</item>
+        <item>Sydney</item>
+        <item>London</item>
+        <item>Moscow</item>
+        <item>Nairobi</item>
+        <item>Dubai</item>
+        <item>Doha</item>
+        <item>Phuket</item>
+        <item>Pattaya</item>
+        <item>Port Blair</item>
+        <item>Bangkok</item>
+        <item>Beijing</item>
+        <item>Lhasa</item>
+        <item>Shanghai</item>
+        <item>Tokyo</item>
+        <item>Kyoto</item>
+        <item>Sao Paulo</item>
+        <item>Rio De Janeiro</item>
+        <item>Texas</item>
+        <item>San Jose</item>
+        <item>San Fransisco</item>
+        <item>Washington</item>
+        <item>New York</item>
+        <item>Miami</item>
+        <item>Vancouver</item>
+        <item>Berlin</item>
+        <item>Bogota</item>
+        <item>Brisbane</item>
+        <item>Budapest</item>
+        <item>Burnaby</item>
+        <item>Dhaka</item>
+        <item>Islamabad</item>
+        <item>Kathmandu</item>
+        <item>Male</item>
+        <item>Thimphu</item>
+    </string-array>
+
+    <string name="string_temp_c">%1$d&#176;C</string>
+    <string name="string_temp_f">%1$d&#176;F</string>
+    <string name="string_feelslike_c">%1$d&#176;F</string>
+    <string name="string_feelslike_f">%1$d&#176;F</string>
+    <string name="string_observation_time">%1$d&#176;F</string>
+    <string name="string_windspeed">%1$d&#176;F</string>
+    <string name="string_winddir">%1$d&#176;F</string>
+    <string name="string_precip">%1$d&#176;F</string>
+    <string name="string_humidity">%1$d&#176;F</string>
+    <string name="string_visibility">%1$d&#176;F</string>
+    <string name="string_pressure">%1$d&#176;F</string>
+    <string name="string_cloud_cover">%1$d&#176;F</string>
+
+</resources>
