@@ -39,7 +39,6 @@ public class WeatherListFragment extends Fragment {
     private int mColumnCount = 1;
     RecyclerView recyclerView;
     private OnListFragmentInteractionListener mListener;
-    //    private WeatherListRecyclerViewAdapter adapter;
     private WeatherListCursorAdapter adapter;
 
     /**
