@@ -74,8 +74,10 @@ public class WeatherService extends Service {
                 return;
             //if successfully updated than set Config.PREFS_KEY_LAST_SYNC_TIMESTAMP
             //(with current timestamp) in shared preferences also
-            if (cityWeatherLocalDS.putCityWeather(city, weatherResponse))
+            if (cityWeatherLocalDS.putCityWeather(city, weatherResponse)) {
+                sendBroadcastMessage();
                 updateLastSyncTime();
+            }
         }
 
         private void updateAllCityWeather() {
@@ -101,8 +103,10 @@ public class WeatherService extends Service {
                     continue;
                 //if successfully updated than set Config.PREFS_KEY_LAST_SYNC_TIMESTAMP
                 //(with current timestamp) in shared preferences also
-                if (cityWeatherLocalDS.putCityWeather(cityLocal, weatherResponse))
+                if (cityWeatherLocalDS.putCityWeather(cityLocal, weatherResponse)) {
+                    sendBroadcastMessage();
                     updateLastSyncTime();
+                }
             }
             //re-schedule the alarm, i.e.overwrite previous alarm
             new Alarm().setAlarm(WeatherService.this);
@@ -115,6 +119,14 @@ public class WeatherService extends Service {
             editor.putLong(Config.PREFS_KEY_LAST_SYNC_TIMESTAMP, System.currentTimeMillis());
             // no need to use apply as it is alreay running in background thread
             editor.commit();
+        }
+
+        // Send an Intent with an action named Config.EVENT_TABLE_CITY_WEATHER_CHANGED.
+        // The Intent cen be received to update UI content.
+        private void sendBroadcastMessage() {
+            Intent intent = new Intent(Config.EVENT_TABLE_CITY_WEATHER_CHANGED);
+            //not so confidential, so no need to have security
+            sendBroadcast(intent);
         }
     }
 

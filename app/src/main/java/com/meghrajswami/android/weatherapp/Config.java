@@ -40,6 +40,9 @@ public class Config {
     public static final String PARAM_SHOW_COMMENTS = "no";
     public static final String PARAM_FORMAT = "json";
 
+    //name of the event name for local broadcast that is triggered upon
+    // any content change in cityweather sqlite table
+    public static final String EVENT_TABLE_CITY_WEATHER_CHANGED = "city_weather_changed";
 
 
 }

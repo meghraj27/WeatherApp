@@ -13,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {
 
+    private static final String KEY_ID_COLUMN = "_id";
+
     private Context mContext;
 
     private Cursor mCursor;
@@ -27,7 +29,7 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
         mContext = context;
         mCursor = cursor;
         mDataValid = cursor != null;
-        mRowIdColumn = mDataValid ? mCursor.getColumnIndex("_id") : -1;
+        mRowIdColumn = mDataValid ? mCursor.getColumnIndex(KEY_ID_COLUMN) : -1;
         mDataSetObserver = new NotifyingDataSetObserver();
         if (mCursor != null) {
             mCursor.registerDataSetObserver(mDataSetObserver);
@@ -101,7 +103,8 @@ public abstract class CursorRecyclerViewAdapter<VH extends RecyclerView.ViewHold
             if (mDataSetObserver != null) {
                 mCursor.registerDataSetObserver(mDataSetObserver);
             }
-            mRowIdColumn = newCursor.getColumnIndexOrThrow("_id");
+//            mRowIdColumn = newCursor.getColumnIndexOrThrow(KEY_ID_COLUMN);
+            mRowIdColumn = newCursor.getColumnIndex(KEY_ID_COLUMN);
             mDataValid = true;
             notifyDataSetChanged();
         } else {

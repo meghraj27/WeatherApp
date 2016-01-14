@@ -1,6 +1,11 @@
 package com.meghrajswami.android.weatherapp.component.screen;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.meghrajswami.android.weatherapp.Config;
 import com.meghrajswami.android.weatherapp.R;
 import com.meghrajswami.android.weatherapp.component.adapter.WeatherListCursorAdapter;
 import com.meghrajswami.android.weatherapp.component.custom.DividerItemDecoration;
@@ -62,6 +68,7 @@ public class WeatherListFragment extends Fragment {
         }
         setHasOptionsMenu(true);
         setRetainInstance(true);
+
     }
 
     @Override
@@ -81,11 +88,11 @@ public class WeatherListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            CityWeatherLocalDS cityWeatherLocalDS = new CityWeatherLocalDS(getActivity());
-            adapter = new WeatherListCursorAdapter(getActivity(),
-                    cityWeatherLocalDS.getAllSelectedItemsCursor());
+            adapter = new WeatherListCursorAdapter(getActivity(), null);
 
             recyclerView.setAdapter(adapter);
+
+            new CityWeatherCursorAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
         return view;
     }
@@ -117,18 +124,36 @@ public class WeatherListFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
         }
+
+        // Register to receive messages.
+        // We are registering an observer (mMessageReceiver) to receive Intents
+        // with actions named {@link Config.EVENT_TABLE_CITY_WEATHER_CHANGED}.
+        getActivity().registerReceiver(contentChangeReceiver,
+                new IntentFilter(Config.EVENT_TABLE_CITY_WEATHER_CHANGED));
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        // Unregister since the fragment is about to be detached.
+        getActivity().unregisterReceiver(contentChangeReceiver);
+        super.onDestroy();
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
     }
+
+    private BroadcastReceiver contentChangeReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //messages already filtered when registering this listener
+            //so no need to filter again
+            new CityWeatherCursorAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
+    };
 
     /**
      * This interface must be implemented by activities that contain this
@@ -143,6 +168,21 @@ public class WeatherListFragment extends Fragment {
         void onMenuSelectCitySelected();
 
         void onTitleChaged(String title);
+    }
+
+    private class CityWeatherCursorAsyncTask extends AsyncTask<Void, Void, Cursor> {
+
+        @Override
+        protected Cursor doInBackground(Void... params) {
+            CityWeatherLocalDS cityWeatherLocalDS = new CityWeatherLocalDS(getActivity());
+            return cityWeatherLocalDS.getAllSelectedItemsCursor();
+        }
+
+        @Override
+        protected void onPostExecute(Cursor cursor) {
+            if (cursor != null)
+                adapter.changeCursor(cursor);
+        }
     }
 
 }
