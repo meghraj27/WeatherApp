@@ -98,7 +98,7 @@
     <string name="string_feelslike_c">Feels like: %1$d&#176;C</string>
     <string name="string_feelslike_f">Feels like: %1$d&#176;F</string>
     <string name="string_observation_time">Observation time: %1$s</string>
-    <string name="string_windspeed">Wind speed: %1$d</string>
+    <string name="string_windspeed">Wind speed: %1$d kmph</string>
     <string name="string_winddir">Wind dir.: %1$d&#176;</string>
     <string name="string_precip">Precip: %1$d mm</string>
     <string name="string_humidity">Humidity: %1$.1f%%</string>
