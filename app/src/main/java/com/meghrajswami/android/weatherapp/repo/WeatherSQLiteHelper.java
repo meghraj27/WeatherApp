@@ -7,6 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 import com.meghrajswami.android.weatherapp.model.WeatherResponse.CityWeather;
 
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import java.util.List;
 public class WeatherSQLiteHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "WeatherSQLiteHelper";
+
+    private static WeatherSQLiteHelper mInstance = null;
 
     //CityWeather object related fields, which will be persisted
     //to sqlite db table
@@ -105,7 +108,17 @@ public class WeatherSQLiteHelper extends SQLiteOpenHelper {
     public WeatherSQLiteHelper(Context context, String name,
                                SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+    }
 
+    public static WeatherSQLiteHelper getInstance(Context context, String name,
+                                                  SQLiteDatabase.CursorFactory factory, int version) {
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        if (mInstance == null) {
+            mInstance = new WeatherSQLiteHelper(context.getApplicationContext(), name,
+                    factory, version);
+        }
+        return mInstance;
     }
 
     @Override

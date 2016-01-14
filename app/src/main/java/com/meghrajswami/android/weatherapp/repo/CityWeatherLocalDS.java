@@ -21,7 +21,7 @@ public class CityWeatherLocalDS {
     private WeatherSQLiteHelper dbHelper;
 
     public CityWeatherLocalDS(Context context) {
-        dbHelper = new WeatherSQLiteHelper(context, Config.SQLITE_DATABASE_NAME,
+        dbHelper = WeatherSQLiteHelper.getInstance(context, Config.SQLITE_DATABASE_NAME,
                 null, Config.SQLITE_DATABASE_VERSION);
     }
 
