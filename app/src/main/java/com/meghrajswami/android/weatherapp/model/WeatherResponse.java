@@ -109,12 +109,12 @@ public class WeatherResponse {
         int winddirDegree;
         String winddir16Point;
         int precipMM;
-        Float precipInches;
-        Float humidity;
+        float precipInches;
+        float humidity;
         int visibility;
         int visibilityMiles;
         int pressure;
-        Float pressureInches;
+        float pressureInches;
         int cloudcover;
 
         private String city;
@@ -349,11 +349,11 @@ public class WeatherResponse {
             return precipMM;
         }
 
-        public Float getPrecipInches() {
+        public float getPrecipInches() {
             return precipInches;
         }
 
-        public Float getHumidity() {
+        public float getHumidity() {
             return humidity;
         }
 
@@ -369,7 +369,7 @@ public class WeatherResponse {
             return pressure;
         }
 
-        public Float getPressureInches() {
+        public float getPressureInches() {
             return pressureInches;
         }
 

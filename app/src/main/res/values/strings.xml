@@ -101,10 +101,10 @@
     <string name="string_windspeed">Wind speed: %1$d</string>
     <string name="string_winddir">Wind dir.: %1$d&#176;</string>
     <string name="string_precip">Precip: %1$d mm</string>
-    <string name="string_humidity">Humidity: %1$f&#37;</string>
+    <string name="string_humidity">Humidity: %1$.1f%%</string>
     <string name="string_visibility">Visibility: %1$d km</string>
     <string name="string_pressure">Pressure: %1$d mb</string>
-    <string name="string_cloud_cover">Cloud cover: %1$d&#37;</string>
+    <string name="string_cloud_cover">Cloud cover: %1$d%%</string>
     <string name="sync_time">Last sync: %1$s</string>
     <string name="string_weather_desc">%1$s</string>
 

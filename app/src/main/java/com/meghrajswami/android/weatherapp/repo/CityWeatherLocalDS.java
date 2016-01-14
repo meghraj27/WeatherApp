@@ -39,34 +39,37 @@ public class CityWeatherLocalDS {
      * @return
      */
     public boolean initializeDb(List<String> cities) {
-        if (cities == null || cities.isEmpty()) {
-            return false;
-        }
-        //check if sync required or not
-        if (dbHelper.numberOfRows() == cities.size()) {
-            return false;
-        }
-        Log.d(TAG, "item count in string -array resoure and local db not same," +
-                " syncing ... ");
-        List<CityWeather> allOriginalItems = dbHelper.getAllItems();
-        for (String city : cities) {
-            //insert city record in db if not exist
-            if (dbHelper.getItem(city) == null) {
-                Log.d(TAG, "Inserting " + city + " into Local Db");
-                putCityWeather(
-                        new CityWeather(city, false));
+        try {
+            if (cities == null || cities.isEmpty()) {
+                return false;
             }
-        }
-        //remove city record from db if city don't exist in 'cities',
-        // i.e. remove item from db when city name doesn't exist in
-        // string-array resource
-        for (CityWeather item : allOriginalItems) {
-            if (!cities.contains(item.getCity())) {
-                Log.d(TAG, "Deleting " + item.getCity() + "from Local Db");
-                dbHelper.deleteItem(item.getCity());
+            //check if sync required or not
+            if (dbHelper.numberOfRows() == cities.size()) {
+                return false;
             }
+            Log.d(TAG, "item count in string -array resoure and local db not same," +
+                    " syncing ... ");
+            List<CityWeather> allOriginalItems = dbHelper.getAllItems();
+            for (String city : cities) {
+                //insert city record in db if not exist
+                if (dbHelper.getItem(city) == null) {
+                    Log.d(TAG, "Inserting " + city + " into Local Db");
+                    putCityWeather(
+                            new CityWeather(city, false));
+                }
+            }
+            //remove city record from db if city don't exist in 'cities',
+            // i.e. remove item from db when city name doesn't exist in
+            // string-array resource
+            for (CityWeather item : allOriginalItems) {
+                if (!cities.contains(item.getCity())) {
+                    Log.d(TAG, "Deleting " + item.getCity() + "from Local Db");
+                    dbHelper.deleteItem(item.getCity());
+                }
+            }
+        } finally {
+            close();
         }
-
         return false;
     }
 
@@ -135,10 +138,14 @@ public class CityWeatherLocalDS {
     }
 
     public boolean toggleCitySelected(String city) {
-        CityWeather cityWeatherFromDB = dbHelper.getItem(city);
-        if (cityWeatherFromDB != null) {
-            cityWeatherFromDB.setSelected(!cityWeatherFromDB.isSelected());
-            return dbHelper.updateItem(cityWeatherFromDB.getCity(), cityWeatherFromDB);
+        try {
+            CityWeather cityWeatherFromDB = dbHelper.getItem(city);
+            if (cityWeatherFromDB != null) {
+                cityWeatherFromDB.setSelected(!cityWeatherFromDB.isSelected());
+                return dbHelper.updateItem(cityWeatherFromDB.getCity(), cityWeatherFromDB);
+            }
+        } finally {
+            close();
         }
         return false;
     }

@@ -60,12 +60,13 @@ public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorA
                 R.string.string_pressure, holder.item.getPressure()));
         holder.textViewCloudCover.setText(context.getResources().getString(
                 R.string.string_cloud_cover, holder.item.getCloudcover()));
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView textViewCity;
-//        public final TextView textViewSyncTime;
+        //        public final TextView textViewSyncTime;
         public final TextView textViewObservationTime;
         public final TextView textViewTemp;
         public final TextView textViewFeelsLike;
