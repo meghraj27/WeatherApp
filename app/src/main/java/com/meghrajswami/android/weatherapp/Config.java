@@ -1,7 +1,7 @@
 package com.meghrajswami.android.weatherapp;
 
 /**
- * Created by megh on 7/8/2015.
+ * Configuration class to hold constants to use all over the application
  */
 public class Config {
 
@@ -18,7 +18,7 @@ public class Config {
     //common shared preferences across application
     public static final String PREFS_NAME = "common_prefs";
     public static final String PREFS_KEY_LAST_SYNC_TIMESTAMP = "last_sync_timestamp";
-    //time in milliseconds after whic if main activity is launched than
+    //time in milliseconds after which if main activity is launched than
     // local data will be updated with latest data from internet
     public static final long CAN_SYNC_AFTER_MILLIS = 1000*60*15; // equal to 15 minutes
 
