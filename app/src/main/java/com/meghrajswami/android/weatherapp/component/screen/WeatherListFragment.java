@@ -86,7 +86,8 @@ public class WeatherListFragment extends Fragment {
             }
 //            adapter = new WeatherListRecyclerViewAdapter(selectedCities, mListener);
             CityWeatherLocalDS cityWeatherLocalDS = new CityWeatherLocalDS(getActivity());
-            adapter = new WeatherListCursorAdapter(getActivity(), cityWeatherLocalDS.getAllSelectedItemsCursor());
+            adapter = new WeatherListCursorAdapter(getActivity(),
+                    cityWeatherLocalDS.getAllSelectedItemsCursor());
 
             recyclerView.setAdapter(adapter);
 //            new AllSelectedCityWeatherAsyncTask()
