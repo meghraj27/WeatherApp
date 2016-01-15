@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity
     private void syncCityWeatherData() {
         SharedPreferences settings = getSharedPreferences(Config.PREFS_NAME, Context.MODE_PRIVATE);
         long lastSyncTimestamp = settings.getLong(Config.PREFS_KEY_LAST_SYNC_TIMESTAMP, 0);
-        Log.d(TAG, "time diff " + (System.currentTimeMillis() - lastSyncTimestamp) / 1000);
         if ((System.currentTimeMillis() - lastSyncTimestamp) > Config.CAN_SYNC_AFTER_MILLIS) {
             Intent serviceIntent = new Intent(this, WeatherService.class);
             startService(serviceIntent);
@@ -178,11 +176,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     private class IsAnyCitySelectedAsyncTask extends AsyncTask<Void, Void, Boolean> {
-
-        @Override
-        protected void onPreExecute() {
-            waitDialog("Please wait ...");
-        }
 
         @Override
         protected Boolean doInBackground(Void... params) {
