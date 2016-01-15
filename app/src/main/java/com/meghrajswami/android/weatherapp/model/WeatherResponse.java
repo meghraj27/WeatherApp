@@ -306,7 +306,7 @@ public class WeatherResponse {
             String url = null;
             if (weatherIconUrl != null && weatherIconUrl.length() != 0) {
                 //we already checked for empty array, and we have trust that Wwo won't
-                //change schema(index 1 will contain the url), so no need to check again
+                //change schema(index 0 will contain the url), so no need to check again
                 url = weatherIconUrl.optJSONObject(0).optString("value");
             }
             return url;
@@ -322,7 +322,7 @@ public class WeatherResponse {
             String desc = null;
             if (weatherDesc != null && weatherDesc.length() != 0) {
                 //we already checked for empty array, and we have trust that
-                // Wwo won't change schema(index 1 will contain the description),
+                // Wwo won't change schema(index 0 will contain the description),
                 // so no need to check again
                 desc = weatherDesc.optJSONObject(0).optString("value");
             }
