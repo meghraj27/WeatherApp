@@ -28,11 +28,11 @@ public class Config {
     public static final String WWO_API_LOCAL_WEATHER_ENDPOINT
             = "http://api.worldweatheronline.com/free/v2/weather.ashx";
 
-//    public static final String WWO_API_KEY
-//            = "e09a714d0204c5848564157818cbe";
-
     public static final String WWO_API_KEY
-            = "f6d664b2b14a6992adc0f7f2a8a44";
+            = "e09a714d0204c5848564157818cbe";
+
+//    public static final String WWO_API_KEY
+//            = "f6d664b2b14a6992adc0f7f2a8a44";
 
     //default request parameters for LocalWeather API request
     public static final int PARAM_NUM_OF_DAYS = 1;
