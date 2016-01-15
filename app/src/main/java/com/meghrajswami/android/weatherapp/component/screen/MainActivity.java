@@ -79,6 +79,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onTitleChaged(String title) {
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(title);
+    }
+
+    @Override
     public void onMenuSelectCitySelected() {
         openFragment(SelectCityFragment.newInstance(1), Config.ANIMATION_RIGHT_TO_LEFT);
     }

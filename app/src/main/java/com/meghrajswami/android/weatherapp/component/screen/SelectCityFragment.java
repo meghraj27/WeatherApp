@@ -100,6 +100,7 @@ public class SelectCityFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
+            mListener.onTitleChaged(getString(R.string.fragment_title_select_city_fragement));
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -121,6 +122,8 @@ public class SelectCityFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onCityToggleSelection(CityWeather item);
+
+        void onTitleChaged(String title);
     }
 
     private class SelectCityAsyncTask extends

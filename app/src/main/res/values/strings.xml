@@ -107,5 +107,7 @@
     <string name="string_cloud_cover">Cloud cover: %1$d%%</string>
     <string name="sync_time">Last sync: %1$s</string>
     <string name="string_weather_desc">%1$s</string>
+    <string name="fragment_title_weatherlistfragment">Current Weather</string>
+    <string name="fragment_title_select_city_fragement">Select cities</string>
 
 </resources>

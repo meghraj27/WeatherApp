@@ -120,6 +120,7 @@ public class WeatherListFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
+            mListener.onTitleChaged(getString(R.string.fragment_title_weatherlistfragment));
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -148,6 +149,8 @@ public class WeatherListFragment extends Fragment {
         void onListFragmentInteraction(CityWeather item);
 
         void onMenuSelectCitySelected();
+
+        void onTitleChaged(String title);
     }
 
     private class AllSelectedCityWeatherAsyncTask extends
