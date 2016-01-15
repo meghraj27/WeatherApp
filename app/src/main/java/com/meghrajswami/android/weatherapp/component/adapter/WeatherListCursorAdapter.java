@@ -78,7 +78,7 @@ public class WeatherListCursorAdapter extends CursorRecyclerViewAdapter<WeatherL
 
         holder.textViewPressure.setText(context.getResources().getString(
                 R.string.string_pressure, holder.item.getPressure()));
-        
+
         holder.textViewCloudCover.setText(context.getResources().getString(
                 R.string.string_cloud_cover, holder.item.getCloudcover()));
 

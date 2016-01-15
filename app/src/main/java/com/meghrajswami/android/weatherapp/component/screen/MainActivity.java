@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity
 
     private void changeScreens(boolean isAnyCitySelected) {
         if (isAnyCitySelected)
-            openFragment(WeatherListFragment.newInstance(1), Config.ANIMATION_BOTTOM_TO_UP);
+            openFragment(WeatherListFragment.newInstance(1), Config.ANIMATION_LEFT_TO_RIGHT);
         else
-            openFragment(SelectCityFragment.newInstance(1), Config.ANIMATION_BOTTOM_TO_UP);
+            openFragment(SelectCityFragment.newInstance(1), Config.ANIMATION_RIGHT_TO_LEFT);
     }
 
     private void syncCityWeatherData() {
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onMenuSelectCitySelected() {
-        openFragment(SelectCityFragment.newInstance(1), Config.ANIMATION_UP_TO_BOTTOM);
+        openFragment(SelectCityFragment.newInstance(1), Config.ANIMATION_RIGHT_TO_LEFT);
     }
 
     //method implemented from SelectCityFragment.OnListFragmentInteractionListener
