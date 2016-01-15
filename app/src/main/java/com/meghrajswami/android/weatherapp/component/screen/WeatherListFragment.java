@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.meghrajswami.android.weatherapp.R;
-import com.meghrajswami.android.weatherapp.component.adapter.MyListCursorAdapter;
+import com.meghrajswami.android.weatherapp.component.adapter.WeatherListCursorAdapter;
 import com.meghrajswami.android.weatherapp.component.custom.DividerItemDecoration;
 import com.meghrajswami.android.weatherapp.model.WeatherResponse.CityWeather;
 import com.meghrajswami.android.weatherapp.repo.CityWeatherLocalDS;
@@ -40,7 +40,7 @@ public class WeatherListFragment extends Fragment {
     RecyclerView recyclerView;
     private OnListFragmentInteractionListener mListener;
     //    private WeatherListRecyclerViewAdapter adapter;
-    private MyListCursorAdapter adapter;
+    private WeatherListCursorAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -89,7 +89,7 @@ public class WeatherListFragment extends Fragment {
             }
 //            adapter = new WeatherListRecyclerViewAdapter(selectedCities, mListener);
             CityWeatherLocalDS cityWeatherLocalDS = new CityWeatherLocalDS(getActivity());
-            adapter = new MyListCursorAdapter(getActivity(), cityWeatherLocalDS.getAllSelectedItemsCursor());
+            adapter = new WeatherListCursorAdapter(getActivity(), cityWeatherLocalDS.getAllSelectedItemsCursor());
 
             recyclerView.setAdapter(adapter);
 //            new AllSelectedCityWeatherAsyncTask()

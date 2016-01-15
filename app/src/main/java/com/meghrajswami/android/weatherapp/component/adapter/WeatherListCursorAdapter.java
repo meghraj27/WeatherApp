@@ -12,14 +12,20 @@ import com.meghrajswami.android.weatherapp.R;
 import com.meghrajswami.android.weatherapp.model.WeatherResponse.CityWeather;
 import com.meghrajswami.android.weatherapp.repo.WeatherSQLiteHelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 /**
  * Cursor recyclerview adapter for weather list item
  */
-public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorAdapter.ViewHolder> {
+public class WeatherListCursorAdapter extends CursorRecyclerViewAdapter<WeatherListCursorAdapter.ViewHolder> {
 
     private Context context;
 
-    public MyListCursorAdapter(Context context, Cursor cursor) {
+    public WeatherListCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor);
         this.context = context;
     }
@@ -38,8 +44,9 @@ public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorA
         holder.textViewCity.setText(String.valueOf(holder.item.getCity()));
 //        holder.textViewSyncTime.setText(context.getResources().getString(R.string.sync_time,
 //                new Date(holder.item.getUpdatedAt()).getTime()));
+
         holder.textViewObservationTime.setText(context.getResources().getString(
-                R.string.string_observation_time, holder.item.getObservation_time()));
+                R.string.string_observation_time, holder.utcToLocal(holder.item.getObservation_time())));
         holder.textViewTemp.setText(context.getResources().getString(
                 R.string.string_temp_c, holder.item.getTemp_C()));
         holder.textViewFeelsLike.setText(context.getResources().getString(
@@ -80,6 +87,7 @@ public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorA
         public final TextView textViewCloudCover;
         public CityWeather item;
 
+
         public ViewHolder(View view) {
             super(view);
             mView = view;
@@ -96,6 +104,19 @@ public class MyListCursorAdapter extends CursorRecyclerViewAdapter<MyListCursorA
             textViewVisibility = (TextView) view.findViewById(R.id.textViewVisibility);
             textViewPressure = (TextView) view.findViewById(R.id.textViewPressure);
             textViewCloudCover = (TextView) view.findViewById(R.id.textViewCloudCover);
+        }
+
+        public String utcToLocal(String utcString) {
+            SimpleDateFormat sdf = new SimpleDateFormat("KK:mm aa", Locale.getDefault());
+            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+            try {
+                Date utcDate = sdf.parse(utcString);
+                sdf.setTimeZone(TimeZone.getDefault());
+                return sdf.format(utcDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 
