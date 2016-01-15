@@ -23,10 +23,7 @@ import com.meghrajswami.android.weatherapp.repo.CityWeatherLocalDS;
 import java.util.List;
 
 /**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
+ * Fragment to display list of current weather for selected cities
  */
 public class WeatherListFragment extends Fragment {
 
