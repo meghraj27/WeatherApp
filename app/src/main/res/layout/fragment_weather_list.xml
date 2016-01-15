@@ -6,8 +6,8 @@
     android:name="com.meghrajswami.android.weatherappsample.WeatherListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
     app:layoutManager="LinearLayoutManager"
     tools:context=".component.screen.WeatherListFragment"
     tools:listitem="@layout/fragment_weather_list_item" />
