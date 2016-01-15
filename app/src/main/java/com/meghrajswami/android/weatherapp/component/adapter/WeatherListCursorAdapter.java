@@ -46,25 +46,39 @@ public class WeatherListCursorAdapter extends CursorRecyclerViewAdapter<WeatherL
 //                new Date(holder.item.getUpdatedAt()).getTime()));
 
         holder.textViewObservationTime.setText(context.getResources().getString(
-                R.string.string_observation_time, holder.utcToLocal(holder.item.getObservation_time())));
+                R.string.string_observation_time,
+                holder.item.getObservation_time() == null ? "" :
+                        holder.utcToLocal(holder.item.getObservation_time())));
+
         holder.textViewTemp.setText(context.getResources().getString(
                 R.string.string_temp_c, holder.item.getTemp_C()));
+
         holder.textViewFeelsLike.setText(context.getResources().getString(
                 R.string.string_feelslike_c, holder.item.getFeelsLikeC()));
+
         holder.textViewWeatherDesc.setText(context.getResources().getString(
-                R.string.string_weather_desc, holder.item.getWeatherDesc()));
+                R.string.string_weather_desc,
+                holder.item.getWeatherDesc() == null ? "" :
+                        holder.item.getWeatherDesc()));
+
         holder.textViewWindspeed.setText(context.getResources().getString(
                 R.string.string_windspeed, holder.item.getWindspeedKmph()));
+
         holder.textViewWinddir.setText(context.getResources().getString(
                 R.string.string_winddir, holder.item.getWinddirDegree()));
+
         holder.textViewPrecip.setText(context.getResources().getString(
                 R.string.string_precip, holder.item.getPrecipMM()));
+
         holder.textViewHumidity.setText(context.getResources().getString(
                 R.string.string_humidity, holder.item.getHumidity()));
+
         holder.textViewVisibility.setText(context.getResources().getString(
                 R.string.string_visibility, holder.item.getVisibility()));
+
         holder.textViewPressure.setText(context.getResources().getString(
                 R.string.string_pressure, holder.item.getPressure()));
+        
         holder.textViewCloudCover.setText(context.getResources().getString(
                 R.string.string_cloud_cover, holder.item.getCloudcover()));
 
