@@ -104,7 +104,7 @@ public class WeatherService extends Service {
                 if (cityWeatherLocalDS.putCityWeather(cityLocal, weatherResponse))
                     updateLastSyncTime();
             }
-            //re-schedule the alarm
+            //re-schedule the alarm, i.e.overwrite previous alarm
             new Alarm().setAlarm(WeatherService.this);
         }
 

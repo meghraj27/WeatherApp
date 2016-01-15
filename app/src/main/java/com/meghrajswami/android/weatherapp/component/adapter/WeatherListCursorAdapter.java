@@ -107,6 +107,8 @@ public class WeatherListCursorAdapter extends CursorRecyclerViewAdapter<WeatherL
         }
 
         public String utcToLocal(String utcString) {
+            if (utcString == null || utcString.equals(""))
+                return null;
             SimpleDateFormat sdf = new SimpleDateFormat("KK:mm aa", Locale.getDefault());
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
             try {
