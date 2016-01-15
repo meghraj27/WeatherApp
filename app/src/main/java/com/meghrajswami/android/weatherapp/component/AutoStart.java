@@ -21,7 +21,7 @@ public class AutoStart extends BroadcastReceiver
             Intent serviceIntent = new Intent(context, WeatherService.class);
             context.startService(serviceIntent);
 
-            //another sync trigger by alarm, overwrite previous alarm
+            //another sync trigger by alarm, overwrite previous alarm 
             alarm.setAlarm(context);
         }
     }
