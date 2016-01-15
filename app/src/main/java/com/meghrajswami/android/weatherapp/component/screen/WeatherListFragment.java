@@ -1,7 +1,6 @@
 package com.meghrajswami.android.weatherapp.component.screen;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,8 +18,6 @@ import com.meghrajswami.android.weatherapp.component.adapter.WeatherListCursorAd
 import com.meghrajswami.android.weatherapp.component.custom.DividerItemDecoration;
 import com.meghrajswami.android.weatherapp.model.WeatherResponse.CityWeather;
 import com.meghrajswami.android.weatherapp.repo.CityWeatherLocalDS;
-
-import java.util.List;
 
 /**
  * Fragment to display list of current weather for selected cities
@@ -84,14 +81,11 @@ public class WeatherListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-//            adapter = new WeatherListRecyclerViewAdapter(selectedCities, mListener);
             CityWeatherLocalDS cityWeatherLocalDS = new CityWeatherLocalDS(getActivity());
             adapter = new WeatherListCursorAdapter(getActivity(),
                     cityWeatherLocalDS.getAllSelectedItemsCursor());
 
             recyclerView.setAdapter(adapter);
-//            new AllSelectedCityWeatherAsyncTask()
-//                    .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
         return view;
     }
@@ -151,24 +145,4 @@ public class WeatherListFragment extends Fragment {
         void onTitleChaged(String title);
     }
 
-    private class AllSelectedCityWeatherAsyncTask extends
-            AsyncTask<Void, Void, List<CityWeather>> {
-
-        @Override
-        protected List<CityWeather> doInBackground(Void... voids) {
-            CityWeatherLocalDS cityWeatherLocalDS = new CityWeatherLocalDS(getActivity());
-            return cityWeatherLocalDS.getAllSelectedCityWeather();
-        }
-
-        protected void onPostExecute(List<CityWeather> list) {
-            if (isAdded()) {
-//                wait = false;
-//                centreWait(false);
-                if (list != null && !list.isEmpty()) {
-//                    adapter.clear();
-//                    adapter.addItems(list);
-                }
-            }
-        }
-    }
 }
